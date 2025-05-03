@@ -1,0 +1,67 @@
+{
+  "appTitle": "Todo App",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "todos": "{count, plural, =0{No todos}=1{1 todo}other{{count} todos}}",
+  "@todos": {
+    "description": "Number of todos",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addTodo": "Add Todo",
+  "@addTodo": {
+    "description": "Add todo button text"
+  },
+  "editTodo": "Edit Todo",
+  "@editTodo": {
+    "description": "Edit todo button text"
+  },
+  "deleteTodo": "Delete Todo",
+  "@deleteTodo": {
+    "description": "Delete todo button text"
+  },
+  "markAsCompleted": "Mark as completed",
+  "@markAsCompleted": {
+    "description": "Mark todo as completed button text"
+  },
+  "markAsIncomplete": "Mark as incomplete",
+  "@markAsIncomplete": {
+    "description": "Mark todo as incomplete button text"
+  },
+  "title": "Title",
+  "@title": {
+    "description": "Todo title field label"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Todo description field label"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button text"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error message title"
+  },
+  "errorLoadingTodos": "Error loading todos",
+  "@errorLoadingTodos": {
+    "description": "Error message when loading todos fails"
+  },
+  "errorSavingTodo": "Error saving todo",
+  "@errorSavingTodo": {
+    "description": "Error message when saving todo fails"
+  },
+  "errorDeletingTodo": "Error deleting todo",
+  "@errorDeletingTodo": {
+    "description": "Error message when deleting todo fails"
+  }
+} 

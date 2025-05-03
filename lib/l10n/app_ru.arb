@@ -1,0 +1,67 @@
+{
+  "appTitle": "Список дел",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "todos": "{count, plural, =0{Нет дел}=1{1 дело}other{{count} дел}}",
+  "@todos": {
+    "description": "Number of todos",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addTodo": "Добавить дело",
+  "@addTodo": {
+    "description": "Add todo button text"
+  },
+  "editTodo": "Редактировать дело",
+  "@editTodo": {
+    "description": "Edit todo button text"
+  },
+  "deleteTodo": "Удалить дело",
+  "@deleteTodo": {
+    "description": "Delete todo button text"
+  },
+  "markAsCompleted": "Отметить как выполненное",
+  "@markAsCompleted": {
+    "description": "Mark todo as completed button text"
+  },
+  "markAsIncomplete": "Отметить как невыполненное",
+  "@markAsIncomplete": {
+    "description": "Mark todo as incomplete button text"
+  },
+  "title": "Название",
+  "@title": {
+    "description": "Todo title field label"
+  },
+  "description": "Описание",
+  "@description": {
+    "description": "Todo description field label"
+  },
+  "save": "Сохранить",
+  "@save": {
+    "description": "Save button text"
+  },
+  "cancel": "Отмена",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "error": "Ошибка",
+  "@error": {
+    "description": "Error message title"
+  },
+  "errorLoadingTodos": "Ошибка загрузки дел",
+  "@errorLoadingTodos": {
+    "description": "Error message when loading todos fails"
+  },
+  "errorSavingTodo": "Ошибка сохранения дела",
+  "@errorSavingTodo": {
+    "description": "Error message when saving todo fails"
+  },
+  "errorDeletingTodo": "Ошибка удаления дела",
+  "@errorDeletingTodo": {
+    "description": "Error message when deleting todo fails"
+  }
+} 

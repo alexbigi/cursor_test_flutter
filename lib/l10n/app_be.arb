@@ -1,0 +1,67 @@
+{
+  "appTitle": "Спіс спраў",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "todos": "{count, plural, =0{Няма спраў}=1{1 справа}other{{count} спраў}}",
+  "@todos": {
+    "description": "Number of todos",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addTodo": "Дадаць справу",
+  "@addTodo": {
+    "description": "Add todo button text"
+  },
+  "editTodo": "Рэдагаваць справу",
+  "@editTodo": {
+    "description": "Edit todo button text"
+  },
+  "deleteTodo": "Выдаліць справу",
+  "@deleteTodo": {
+    "description": "Delete todo button text"
+  },
+  "markAsCompleted": "Адзначыць як выкананае",
+  "@markAsCompleted": {
+    "description": "Mark todo as completed button text"
+  },
+  "markAsIncomplete": "Адзначыць як невыкананае",
+  "@markAsIncomplete": {
+    "description": "Mark todo as incomplete button text"
+  },
+  "title": "Назва",
+  "@title": {
+    "description": "Todo title field label"
+  },
+  "description": "Апісанне",
+  "@description": {
+    "description": "Todo description field label"
+  },
+  "save": "Захаваць",
+  "@save": {
+    "description": "Save button text"
+  },
+  "cancel": "Адмена",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "error": "Памылка",
+  "@error": {
+    "description": "Error message title"
+  },
+  "errorLoadingTodos": "Памылка загрузкі спраў",
+  "@errorLoadingTodos": {
+    "description": "Error message when loading todos fails"
+  },
+  "errorSavingTodo": "Памылка захавання справы",
+  "@errorSavingTodo": {
+    "description": "Error message when saving todo fails"
+  },
+  "errorDeletingTodo": "Памылка выдалення справы",
+  "@errorDeletingTodo": {
+    "description": "Error message when deleting todo fails"
+  }
+} 
