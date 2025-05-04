@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/features/todo/presentation/providers/locale_provider.dart';
+import 'package:cursor_test_flutter/features/todo/presentation/providers/locale_provider.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSelector extends StatelessWidget {
@@ -7,23 +7,52 @@ class LanguageSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentLocale = context.watch<LocaleProvider>().locale;
+
     return PopupMenuButton<Locale>(
       icon: const Icon(Icons.language),
-      onSelected: (Locale locale) {
-        context.read<LocaleProvider>().setLocale(locale);
+      onSelected: (Locale locale) async {
+        await context.read<LocaleProvider>().setLocale(locale);
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<Locale>>[
-        const PopupMenuItem<Locale>(
-          value: Locale('en'),
-          child: Text('English'),
+        PopupMenuItem<Locale>(
+          value: const Locale('en'),
+          child: Row(
+            children: [
+              const Text('English'),
+              if (currentLocale.languageCode == 'en')
+                const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Icon(Icons.check, size: 16),
+                ),
+            ],
+          ),
         ),
-        const PopupMenuItem<Locale>(
-          value: Locale('ru'),
-          child: Text('Русский'),
+        PopupMenuItem<Locale>(
+          value: const Locale('ru'),
+          child: Row(
+            children: [
+              const Text('Русский'),
+              if (currentLocale.languageCode == 'ru')
+                const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Icon(Icons.check, size: 16),
+                ),
+            ],
+          ),
         ),
-        const PopupMenuItem<Locale>(
-          value: Locale('be'),
-          child: Text('Беларуская'),
+        PopupMenuItem<Locale>(
+          value: const Locale('be'),
+          child: Row(
+            children: [
+              const Text('Беларуская'),
+              if (currentLocale.languageCode == 'be')
+                const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: Icon(Icons.check, size: 16),
+                ),
+            ],
+          ),
         ),
       ],
     );

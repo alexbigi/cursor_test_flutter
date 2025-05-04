@@ -1,4 +1,4 @@
-import 'package:my_flutter_app/features/todo/domain/entities/todo.dart';
+import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart';
 
 abstract class TodoRepository {
   Future<List<Todo>> getTodos();

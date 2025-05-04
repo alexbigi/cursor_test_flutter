@@ -1,10 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_flutter_app/features/todo/domain/entities/todo.dart';
-import 'package:my_flutter_app/features/todo/domain/repositories/todo_repository.dart';
-import 'package:my_flutter_app/features/todo/domain/usecases/get_todos_usecase.dart';
-import 'package:my_flutter_app/features/todo/presentation/bloc/todo_bloc.dart';
-import 'package:my_flutter_app/features/todo/presentation/bloc/todo_event.dart';
-import 'package:my_flutter_app/features/todo/presentation/bloc/todo_state.dart';
+import 'package:flutter/material.dart';
+import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart';
+import 'package:cursor_test_flutter/features/todo/domain/repositories/todo_repository.dart';
+import 'package:cursor_test_flutter/features/todo/domain/usecases/get_todos_usecase.dart';
+import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_bloc.dart';
+import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_event.dart';
+import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_state.dart';
+import 'package:cursor_test_flutter/l10n/app_localizations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'todo_bloc_test.mocks.dart';
@@ -24,6 +26,7 @@ void main() {
   late TodoBloc todoBloc;
   late MockTodoRepository mockTodoRepository;
   late GetTodosUseCase getTodosUseCase;
+  late AppLocalizations l10n;
 
   /// Test todo item used across multiple tests
   final testTodo = Todo(
@@ -44,12 +47,17 @@ void main() {
     completedAt: DateTime.now(),
   );
 
+  setUpAll(() async {
+    l10n = await AppLocalizations.delegate.load(const Locale('en'));
+  });
+
   setUp(() {
     mockTodoRepository = MockTodoRepository();
     getTodosUseCase = GetTodosUseCase(mockTodoRepository);
     todoBloc = TodoBloc(
       getTodosUseCase: getTodosUseCase,
       repository: mockTodoRepository,
+      l10n: l10n,
     );
   });
 
@@ -105,10 +113,10 @@ void main() {
       todoBloc.add(LoadTodos());
     });
 
-    test('emits [TodoLoading, TodoError] when error occurs', () async {
+    test('emits [TodoLoading, TodoError] when repository throws exception',
+        () async {
       // arrange
-      when(mockTodoRepository.getTodos())
-          .thenThrow(Exception('Error loading todos'));
+      when(mockTodoRepository.getTodos()).thenThrow(Exception());
 
       // assert later
       expectLater(
@@ -117,8 +125,8 @@ void main() {
           isA<TodoLoading>(),
           isA<TodoError>().having(
             (state) => state.message,
-            'error message',
-            'Exception: Error loading todos',
+            'message',
+            l10n.errorLoadingTodos,
           ),
         ]),
       );
@@ -131,14 +139,18 @@ void main() {
   group('AddTodo', () {
     test('emits [TodoLoaded] when successful', () async {
       // arrange
-      when(mockTodoRepository.addTodo(any)).thenAnswer((_) async {});
+      when(mockTodoRepository.addTodo(testTodo)).thenAnswer((_) async => null);
       when(mockTodoRepository.getTodos()).thenAnswer((_) async => [testTodo]);
 
       // assert later
       expectLater(
         todoBloc.stream,
         emitsInOrder([
-          isA<TodoLoaded>().having((state) => state.todos, 'todos', [testTodo]),
+          isA<TodoLoaded>().having(
+            (state) => state.todos,
+            'todos',
+            [testTodo],
+          ),
         ]),
       );
 
@@ -146,10 +158,9 @@ void main() {
       todoBloc.add(AddTodo(testTodo));
     });
 
-    test('emits [TodoError] when error occurs', () async {
+    test('emits [TodoError] when repository throws exception', () async {
       // arrange
-      when(mockTodoRepository.addTodo(any))
-          .thenThrow(Exception('Error adding todo'));
+      when(mockTodoRepository.addTodo(testTodo)).thenThrow(Exception());
 
       // assert later
       expectLater(
@@ -157,8 +168,8 @@ void main() {
         emitsInOrder([
           isA<TodoError>().having(
             (state) => state.message,
-            'error message',
-            'Exception: Error adding todo',
+            'message',
+            l10n.errorSavingTodo,
           ),
         ]),
       );
@@ -171,14 +182,19 @@ void main() {
   group('UpdateTodo', () {
     test('emits [TodoLoaded] when successful', () async {
       // arrange
-      when(mockTodoRepository.updateTodo(any)).thenAnswer((_) async {});
+      when(mockTodoRepository.updateTodo(testTodo))
+          .thenAnswer((_) async => null);
       when(mockTodoRepository.getTodos()).thenAnswer((_) async => [testTodo]);
 
       // assert later
       expectLater(
         todoBloc.stream,
         emitsInOrder([
-          isA<TodoLoaded>().having((state) => state.todos, 'todos', [testTodo]),
+          isA<TodoLoaded>().having(
+            (state) => state.todos,
+            'todos',
+            [testTodo],
+          ),
         ]),
       );
 
@@ -186,10 +202,9 @@ void main() {
       todoBloc.add(UpdateTodo(testTodo));
     });
 
-    test('emits [TodoError] when error occurs', () async {
+    test('emits [TodoError] when repository throws exception', () async {
       // arrange
-      when(mockTodoRepository.updateTodo(any))
-          .thenThrow(Exception('Error updating todo'));
+      when(mockTodoRepository.updateTodo(testTodo)).thenThrow(Exception());
 
       // assert later
       expectLater(
@@ -197,8 +212,8 @@ void main() {
         emitsInOrder([
           isA<TodoError>().having(
             (state) => state.message,
-            'error message',
-            'Exception: Error updating todo',
+            'message',
+            l10n.errorSavingTodo,
           ),
         ]),
       );
@@ -209,9 +224,10 @@ void main() {
   });
 
   group('DeleteTodo', () {
-    test('emits [TodoLoaded] when successful with empty list', () async {
+    test('emits [TodoLoaded] when successful', () async {
       // arrange
-      when(mockTodoRepository.deleteTodo(any)).thenAnswer((_) async {});
+      when(mockTodoRepository.deleteTodo(testTodo.id))
+          .thenAnswer((_) async => null);
       when(mockTodoRepository.getTodos()).thenAnswer((_) async => []);
 
       // assert later
@@ -226,32 +242,9 @@ void main() {
       todoBloc.add(DeleteTodo(testTodo.id));
     });
 
-    test('emits [TodoLoaded] when successful with remaining todos', () async {
+    test('emits [TodoError] when repository throws exception', () async {
       // arrange
-      when(mockTodoRepository.deleteTodo(any)).thenAnswer((_) async {});
-      when(mockTodoRepository.getTodos())
-          .thenAnswer((_) async => [completedTodo]);
-
-      // assert later
-      expectLater(
-        todoBloc.stream,
-        emitsInOrder([
-          isA<TodoLoaded>().having(
-            (state) => state.todos,
-            'todos',
-            [completedTodo],
-          ),
-        ]),
-      );
-
-      // act
-      todoBloc.add(DeleteTodo(testTodo.id));
-    });
-
-    test('emits [TodoError] when error occurs', () async {
-      // arrange
-      when(mockTodoRepository.deleteTodo(any))
-          .thenThrow(Exception('Error deleting todo'));
+      when(mockTodoRepository.deleteTodo(testTodo.id)).thenThrow(Exception());
 
       // assert later
       expectLater(
@@ -259,8 +252,8 @@ void main() {
         emitsInOrder([
           isA<TodoError>().having(
             (state) => state.message,
-            'error message',
-            'Exception: Error deleting todo',
+            'message',
+            l10n.errorDeletingTodo,
           ),
         ]),
       );
@@ -273,7 +266,10 @@ void main() {
   group('ToggleTodoStatus', () {
     test('emits [TodoLoaded] when successful with completed todo', () async {
       // arrange
-      when(mockTodoRepository.toggleTodoStatus(any)).thenAnswer((_) async {});
+      when(mockTodoRepository.getTodoById(completedTodo.id))
+          .thenAnswer((_) async => completedTodo);
+      when(mockTodoRepository.toggleTodoStatus(completedTodo.id))
+          .thenAnswer((_) async => null);
       when(mockTodoRepository.getTodos())
           .thenAnswer((_) async => [completedTodo]);
 
@@ -295,14 +291,21 @@ void main() {
 
     test('emits [TodoLoaded] when successful with incomplete todo', () async {
       // arrange
-      when(mockTodoRepository.toggleTodoStatus(any)).thenAnswer((_) async {});
+      when(mockTodoRepository.getTodoById(testTodo.id))
+          .thenAnswer((_) async => testTodo);
+      when(mockTodoRepository.toggleTodoStatus(testTodo.id))
+          .thenAnswer((_) async => null);
       when(mockTodoRepository.getTodos()).thenAnswer((_) async => [testTodo]);
 
       // assert later
       expectLater(
         todoBloc.stream,
         emitsInOrder([
-          isA<TodoLoaded>().having((state) => state.todos, 'todos', [testTodo]),
+          isA<TodoLoaded>().having(
+            (state) => state.todos,
+            'todos',
+            [testTodo],
+          ),
         ]),
       );
 
@@ -310,10 +313,12 @@ void main() {
       todoBloc.add(ToggleTodoStatus(testTodo.id));
     });
 
-    test('emits [TodoError] when error occurs', () async {
+    test('emits [TodoError] when repository throws exception', () async {
       // arrange
-      when(mockTodoRepository.toggleTodoStatus(any))
-          .thenThrow(Exception('Error toggling todo status'));
+      when(mockTodoRepository.getTodoById(testTodo.id))
+          .thenAnswer((_) async => testTodo);
+      when(mockTodoRepository.toggleTodoStatus(testTodo.id))
+          .thenThrow(Exception());
 
       // assert later
       expectLater(
@@ -321,8 +326,8 @@ void main() {
         emitsInOrder([
           isA<TodoError>().having(
             (state) => state.message,
-            'error message',
-            'Exception: Error toggling todo status',
+            'message',
+            l10n.errorSavingTodo,
           ),
         ]),
       );

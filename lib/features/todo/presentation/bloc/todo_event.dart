@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
-import 'package:my_flutter_app/features/todo/domain/entities/todo.dart';
+import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart';
 
 abstract class TodoEvent extends Equatable {
   const TodoEvent();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class LoadTodos extends TodoEvent {}
@@ -16,7 +16,7 @@ class AddTodo extends TodoEvent {
   const AddTodo(this.todo);
 
   @override
-  List<Object?> get props => [todo];
+  List<Object> get props => [todo];
 }
 
 class UpdateTodo extends TodoEvent {
@@ -25,7 +25,7 @@ class UpdateTodo extends TodoEvent {
   const UpdateTodo(this.todo);
 
   @override
-  List<Object?> get props => [todo];
+  List<Object> get props => [todo];
 }
 
 class DeleteTodo extends TodoEvent {
@@ -34,7 +34,7 @@ class DeleteTodo extends TodoEvent {
   const DeleteTodo(this.id);
 
   @override
-  List<Object?> get props => [id];
+  List<Object> get props => [id];
 }
 
 class ToggleTodoStatus extends TodoEvent {
@@ -43,5 +43,5 @@ class ToggleTodoStatus extends TodoEvent {
   const ToggleTodoStatus(this.id);
 
   @override
-  List<Object?> get props => [id];
+  List<Object> get props => [id];
 }

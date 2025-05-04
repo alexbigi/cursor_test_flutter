@@ -16,6 +16,10 @@
   "@addTodo": {
     "description": "Add todo button text"
   },
+  "add": "Добавить",
+  "@add": {
+    "description": "Add button text"
+  },
   "editTodo": "Редактировать дело",
   "@editTodo": {
     "description": "Edit todo button text"
@@ -36,9 +40,17 @@
   "@title": {
     "description": "Todo title field label"
   },
+  "titleHint": "Введите название дела",
+  "@titleHint": {
+    "description": "Hint text for todo title field"
+  },
   "description": "Описание",
   "@description": {
     "description": "Todo description field label"
+  },
+  "descriptionHint": "Введите описание дела",
+  "@descriptionHint": {
+    "description": "Hint text for todo description field"
   },
   "save": "Сохранить",
   "@save": {
@@ -63,5 +75,21 @@
   "errorDeletingTodo": "Ошибка удаления дела",
   "@errorDeletingTodo": {
     "description": "Error message when deleting todo fails"
+  },
+  "noTodos": "Нет дел",
+  "@noTodos": {
+    "description": "Message shown when there are no todos"
+  },
+  "todoDeleted": "Дело удалено",
+  "@todoDeleted": {
+    "description": "Message shown when a todo is deleted"
+  },
+  "undo": "Отменить",
+  "@undo": {
+    "description": "Button text to undo an action"
+  },
+  "retry": "Повторить",
+  "@retry": {
+    "description": "Button text to retry an action"
   }
-} 
+}

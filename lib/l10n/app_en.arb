@@ -16,6 +16,10 @@
   "@addTodo": {
     "description": "Add todo button text"
   },
+  "add": "Add",
+  "@add": {
+    "description": "Add button text"
+  },
   "editTodo": "Edit Todo",
   "@editTodo": {
     "description": "Edit todo button text"
@@ -36,9 +40,17 @@
   "@title": {
     "description": "Todo title field label"
   },
+  "titleHint": "Enter todo title",
+  "@titleHint": {
+    "description": "Hint text for todo title field"
+  },
   "description": "Description",
   "@description": {
     "description": "Todo description field label"
+  },
+  "descriptionHint": "Enter todo description",
+  "@descriptionHint": {
+    "description": "Hint text for todo description field"
   },
   "save": "Save",
   "@save": {
@@ -63,5 +75,21 @@
   "errorDeletingTodo": "Error deleting todo",
   "@errorDeletingTodo": {
     "description": "Error message when deleting todo fails"
+  },
+  "noTodos": "No todos yet",
+  "@noTodos": {
+    "description": "Message shown when there are no todos"
+  },
+  "todoDeleted": "Todo deleted",
+  "@todoDeleted": {
+    "description": "Message shown when a todo is deleted"
+  },
+  "undo": "Undo",
+  "@undo": {
+    "description": "Button text to undo an action"
+  },
+  "retry": "Retry",
+  "@retry": {
+    "description": "Button text to retry an action"
   }
-} 
+}

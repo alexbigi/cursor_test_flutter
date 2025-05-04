@@ -16,6 +16,10 @@
   "@addTodo": {
     "description": "Add todo button text"
   },
+  "add": "Дадаць",
+  "@add": {
+    "description": "Add button text"
+  },
   "editTodo": "Рэдагаваць справу",
   "@editTodo": {
     "description": "Edit todo button text"
@@ -36,9 +40,17 @@
   "@title": {
     "description": "Todo title field label"
   },
+  "titleHint": "Увядзіце назву справы",
+  "@titleHint": {
+    "description": "Hint text for todo title field"
+  },
   "description": "Апісанне",
   "@description": {
     "description": "Todo description field label"
+  },
+  "descriptionHint": "Увядзіце апісанне справы",
+  "@descriptionHint": {
+    "description": "Hint text for todo description field"
   },
   "save": "Захаваць",
   "@save": {
@@ -63,5 +75,21 @@
   "errorDeletingTodo": "Памылка выдалення справы",
   "@errorDeletingTodo": {
     "description": "Error message when deleting todo fails"
+  },
+  "noTodos": "Няма спраў",
+  "@noTodos": {
+    "description": "Message shown when there are no todos"
+  },
+  "todoDeleted": "Справа выдалена",
+  "@todoDeleted": {
+    "description": "Message shown when a todo is deleted"
+  },
+  "undo": "Адмяніць",
+  "@undo": {
+    "description": "Button text to undo an action"
+  },
+  "retry": "Паўтарыць",
+  "@retry": {
+    "description": "Button text to retry an action"
   }
-} 
+}
