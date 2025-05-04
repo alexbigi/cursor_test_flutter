@@ -59,6 +59,10 @@ class SettingsDrawer extends StatelessWidget {
                   value: Locale('ru'),
                   child: Text('Русский'),
                 ),
+                DropdownMenuItem(
+                  value: Locale('be'),
+                  child: Text('Беларуская'),
+                ),
               ],
             ),
           ),

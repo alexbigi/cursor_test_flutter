@@ -15,5 +15,8 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light",
-    "system": "System"
+    "system": "System",
+    "retry": "Retry",
+    "add": "Add",
+    "delete": "Delete"
 }
