@@ -38,7 +38,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     return TodoBloc(
       getTodosUseCase: getTodosUseCase,
       repository: repository,
-      l10n: AppLocalizations.of(context)!,
+      l10n: context.l10n,
     );
   }
 
