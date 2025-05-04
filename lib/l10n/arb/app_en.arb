@@ -1,0 +1,19 @@
+{
+    "appTitle": "Todo App",
+    "addTodo": "Add Todo",
+    "editTodo": "Edit Todo",
+    "deleteTodo": "Delete Todo",
+    "title": "Title",
+    "description": "Description",
+    "save": "Save",
+    "cancel": "Cancel",
+    "noTodos": "No todos yet",
+    "completed": "Completed",
+    "incomplete": "Incomplete",
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
+}

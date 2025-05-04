@@ -1,5 +1,5 @@
 {
-  "appTitle": "Список дел",
+  "appTitle": "Приложение Задач",
   "@appTitle": {
     "description": "The title of the application"
   },
@@ -12,7 +12,7 @@
       }
     }
   },
-  "addTodo": "Добавить дело",
+  "addTodo": "Добавить задачу",
   "@addTodo": {
     "description": "Add todo button text"
   },
@@ -20,11 +20,11 @@
   "@add": {
     "description": "Add button text"
   },
-  "editTodo": "Редактировать дело",
+  "editTodo": "Редактировать задачу",
   "@editTodo": {
     "description": "Edit todo button text"
   },
-  "deleteTodo": "Удалить дело",
+  "deleteTodo": "Удалить задачу",
   "@deleteTodo": {
     "description": "Delete todo button text"
   },
@@ -36,7 +36,7 @@
   "@markAsIncomplete": {
     "description": "Mark todo as incomplete button text"
   },
-  "title": "Название",
+  "title": "Заголовок",
   "@title": {
     "description": "Todo title field label"
   },
@@ -91,5 +91,11 @@
   "retry": "Повторить",
   "@retry": {
     "description": "Button text to retry an action"
-  }
+  },
+  "settings": "Настройки",
+  "language": "Язык",
+  "theme": "Тема",
+  "systemTheme": "Системная",
+  "lightTheme": "Светлая",
+  "darkTheme": "Темная"
 }

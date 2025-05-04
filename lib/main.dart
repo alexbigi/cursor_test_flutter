@@ -1,26 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart';
 import 'package:cursor_test_flutter/app.dart';
 import 'package:cursor_test_flutter/core/di/di.dart';
-import 'package:cursor_test_flutter/core/utils/logger.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
-
-    // Initialize Hive
-    await Hive.initFlutter();
-    Hive.registerAdapter(TodoAdapter());
-    await Hive.openBox<Todo>('todos');
-    Logger.info('Hive initialized successfully');
-
-    // Initialize dependencies
+    if (kDebugMode) {
+      print('Initializing dependencies...');
+    }
     await init();
-
+    if (kDebugMode) {
+      print('Dependencies initialized successfully');
+    }
     runApp(const App());
   } catch (e, stackTrace) {
-    Logger.error('Failed to initialize app', e, stackTrace);
+    if (kDebugMode) {
+      print('Error during initialization: $e');
+      print('Stack trace: $stackTrace');
+    }
     rethrow;
   }
 }

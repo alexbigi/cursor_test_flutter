@@ -9,6 +9,8 @@ import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart'
     as _i4;
 import 'package:cursor_test_flutter/features/todo/domain/repositories/todo_repository.dart'
     as _i2;
+import 'package:cursor_test_flutter/features/todo/domain/usecases/get_todos_usecase.dart'
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -90,4 +92,22 @@ class MockTodoRepository extends _i1.Mock implements _i2.TodoRepository {
         returnValue: _i3.Future<void>.value(),
         returnValueForMissingStub: _i3.Future<void>.value(),
       ) as _i3.Future<void>);
+}
+
+/// A class which mocks [GetTodosUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetTodosUseCase extends _i1.Mock implements _i5.GetTodosUseCase {
+  MockGetTodosUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<List<_i4.Todo>> call() => (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue: _i3.Future<List<_i4.Todo>>.value(<_i4.Todo>[]),
+      ) as _i3.Future<List<_i4.Todo>>);
 }

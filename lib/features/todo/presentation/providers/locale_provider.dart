@@ -1,6 +1,6 @@
+import 'package:cursor_test_flutter/core/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cursor_test_flutter/core/utils/logger.dart';
 
 class LocaleProvider extends ChangeNotifier {
   static const String _localeKey = 'locale';

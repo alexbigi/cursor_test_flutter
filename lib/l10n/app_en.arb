@@ -14,7 +14,7 @@
   },
   "addTodo": "Add Todo",
   "@addTodo": {
-    "description": "Add todo button text"
+    "description": "Text for add todo button"
   },
   "add": "Add",
   "@add": {
@@ -22,11 +22,11 @@
   },
   "editTodo": "Edit Todo",
   "@editTodo": {
-    "description": "Edit todo button text"
+    "description": "Text for edit todo button"
   },
   "deleteTodo": "Delete Todo",
   "@deleteTodo": {
-    "description": "Delete todo button text"
+    "description": "Text for delete todo button"
   },
   "markAsCompleted": "Mark as completed",
   "@markAsCompleted": {
@@ -38,7 +38,7 @@
   },
   "title": "Title",
   "@title": {
-    "description": "Todo title field label"
+    "description": "Label for title field"
   },
   "titleHint": "Enter todo title",
   "@titleHint": {
@@ -46,7 +46,7 @@
   },
   "description": "Description",
   "@description": {
-    "description": "Todo description field label"
+    "description": "Label for description field"
   },
   "descriptionHint": "Enter todo description",
   "@descriptionHint": {
@@ -54,11 +54,11 @@
   },
   "save": "Save",
   "@save": {
-    "description": "Save button text"
+    "description": "Text for save button"
   },
   "cancel": "Cancel",
   "@cancel": {
-    "description": "Cancel button text"
+    "description": "Text for cancel button"
   },
   "error": "Error",
   "@error": {
@@ -78,7 +78,7 @@
   },
   "noTodos": "No todos yet",
   "@noTodos": {
-    "description": "Message shown when there are no todos"
+    "description": "Text shown when there are no todos"
   },
   "todoDeleted": "Todo deleted",
   "@todoDeleted": {
@@ -91,5 +91,40 @@
   "retry": "Retry",
   "@retry": {
     "description": "Button text to retry an action"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Text for settings"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Text for language setting"
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Text for theme setting"
+  },
+  "systemTheme": "System",
+  "lightTheme": "Light",
+  "darkTheme": "Dark",
+  "completed": "Completed",
+  "@completed": {
+    "description": "Text for completed status"
+  },
+  "incomplete": "Incomplete",
+  "@incomplete": {
+    "description": "Text for incomplete status"
+  },
+  "system": "System",
+  "@system": {
+    "description": "Text for system theme"
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Text for light theme"
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Text for dark theme"
   }
 }

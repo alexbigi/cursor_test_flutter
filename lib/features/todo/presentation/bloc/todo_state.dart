@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:cursor_test_flutter/features/todo/domain/entities/todo.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class TodoState extends Equatable {
   const TodoState();

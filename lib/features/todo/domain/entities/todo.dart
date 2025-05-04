@@ -8,27 +8,21 @@ part 'todo.g.dart';
 /// and timestamps. It's also configured to work with Hive for persistence.
 @HiveType(typeId: 0)
 class Todo extends HiveObject {
-  /// Unique identifier for the todo item
   @HiveField(0)
   final String id;
 
-  /// Title of the todo item
   @HiveField(1)
   final String title;
 
-  /// Detailed description of the todo item
   @HiveField(2)
   final String description;
 
-  /// Whether the todo item is completed
   @HiveField(3)
   final bool isCompleted;
 
-  /// When the todo item was created
   @HiveField(4)
   final DateTime createdAt;
 
-  /// When the todo item was completed (null if not completed)
   @HiveField(5)
   final DateTime? completedAt;
 
@@ -41,7 +35,6 @@ class Todo extends HiveObject {
     this.completedAt,
   });
 
-  /// Creates a copy of this todo item with the given fields replaced with new values.
   Todo copyWith({
     String? id,
     String? title,

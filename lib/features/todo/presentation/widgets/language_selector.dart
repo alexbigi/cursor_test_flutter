@@ -1,5 +1,5 @@
+import 'package:cursor_test_flutter/core/providers/locale_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:cursor_test_flutter/features/todo/presentation/providers/locale_provider.dart';
 import 'package:provider/provider.dart';
 
 class LanguageSelector extends StatelessWidget {
@@ -18,6 +18,7 @@ class LanguageSelector extends StatelessWidget {
         PopupMenuItem<Locale>(
           value: const Locale('en'),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Text('English'),
               if (currentLocale.languageCode == 'en')
@@ -31,6 +32,7 @@ class LanguageSelector extends StatelessWidget {
         PopupMenuItem<Locale>(
           value: const Locale('ru'),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Text('Русский'),
               if (currentLocale.languageCode == 'ru')
@@ -44,6 +46,7 @@ class LanguageSelector extends StatelessWidget {
         PopupMenuItem<Locale>(
           value: const Locale('be'),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Text('Беларуская'),
               if (currentLocale.languageCode == 'be')
