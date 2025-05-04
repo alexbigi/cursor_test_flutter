@@ -4,7 +4,6 @@ import 'package:cursor_test_flutter/features/todo/domain/usecases/get_todos_usec
 import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_bloc.dart';
 import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_event.dart';
 import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_state.dart';
-import 'package:cursor_test_flutter/l10n/app_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -21,32 +20,18 @@ import 'todo_bloc_test.mocks.dart';
 ///
 /// Each operation is tested for both success and error scenarios.
 @GenerateMocks([TodoRepository, GetTodosUseCase])
-class MockAppLocalizations extends Mock implements AppLocalizations {
-  @override
-  String get errorLoadingTodos => 'Error loading todos';
-
-  @override
-  String get errorSavingTodo => 'Error saving todo';
-
-  @override
-  String get errorDeletingTodo => 'Error deleting todo';
-}
-
 void main() {
   late TodoBloc bloc;
   late MockTodoRepository mockRepository;
   late MockGetTodosUseCase mockGetTodosUseCase;
-  late MockAppLocalizations mockL10n;
 
   setUp(() {
     mockRepository = MockTodoRepository();
     mockGetTodosUseCase = MockGetTodosUseCase();
-    mockL10n = MockAppLocalizations();
 
     bloc = TodoBloc(
       repository: mockRepository,
       getTodosUseCase: mockGetTodosUseCase,
-      l10n: mockL10n,
     );
   });
 

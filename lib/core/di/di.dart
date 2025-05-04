@@ -9,7 +9,6 @@ import 'package:cursor_test_flutter/features/todo/domain/usecases/delete_todo_us
 import 'package:cursor_test_flutter/features/todo/domain/usecases/get_todos_usecase.dart';
 import 'package:cursor_test_flutter/features/todo/domain/usecases/update_todo_usecase.dart';
 import 'package:cursor_test_flutter/features/todo/presentation/bloc/todo_bloc.dart';
-import 'package:cursor_test_flutter/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -90,7 +89,6 @@ Future<void> init() async {
     () => TodoBloc(
       getTodosUseCase: sl<GetTodosUseCase>(),
       repository: sl<TodoRepository>(),
-      l10n: sl<AppLocalizations>(),
     ),
   );
   if (kDebugMode) {

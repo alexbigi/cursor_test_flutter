@@ -29,7 +29,6 @@ class TodoListPage extends StatelessWidget {
       create: (context) => TodoBloc(
         getTodosUseCase: GetIt.I<GetTodosUseCase>(),
         repository: GetIt.I<TodoRepository>(),
-        l10n: l10n,
       ),
       child: Builder(
         builder: (context) => Scaffold(

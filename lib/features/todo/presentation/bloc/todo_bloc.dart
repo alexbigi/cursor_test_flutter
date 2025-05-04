@@ -1,8 +1,6 @@
 import 'package:cursor_test_flutter/features/todo/domain/repositories/todo_repository.dart';
 import 'package:cursor_test_flutter/features/todo/domain/usecases/get_todos_usecase.dart';
-import 'package:cursor_test_flutter/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'todo_event.dart';
@@ -12,12 +10,10 @@ import 'todo_state.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   final GetTodosUseCase getTodosUseCase;
   final TodoRepository repository;
-  final AppLocalizations l10n;
 
   TodoBloc({
     required this.getTodosUseCase,
     required this.repository,
-    required this.l10n,
   }) : super(TodoInitial()) {
     if (kDebugMode) {
       print('TodoBloc initialized');
@@ -27,19 +23,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<UpdateTodo>(_onUpdateTodo);
     on<DeleteTodo>(_onDeleteTodo);
     on<ToggleTodoStatus>(_onToggleTodoStatus);
-  }
-
-  /// Factory constructor that creates a TodoBloc with localization from context
-  factory TodoBloc.fromContext(
-    BuildContext context, {
-    required GetTodosUseCase getTodosUseCase,
-    required TodoRepository repository,
-  }) {
-    return TodoBloc(
-      getTodosUseCase: getTodosUseCase,
-      repository: repository,
-      l10n: context.l10n,
-    );
   }
 
   Future<void> _onLoadTodos(LoadTodos event, Emitter<TodoState> emit) async {
@@ -57,7 +40,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       if (kDebugMode) {
         print('Error loading todos: $e');
       }
-      emit(TodoError(l10n.errorLoadingTodos));
+      emit(const TodoError('Error loading todos'));
     }
   }
 
@@ -67,7 +50,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       final todos = await getTodosUseCase();
       emit(TodoLoaded(todos));
     } catch (e) {
-      emit(TodoError(l10n.errorSavingTodo));
+      emit(const TodoError('Error saving todo'));
     }
   }
 
@@ -77,7 +60,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       final todos = await getTodosUseCase();
       emit(TodoLoaded(todos));
     } catch (e) {
-      emit(TodoError(l10n.errorSavingTodo));
+      emit(const TodoError('Error saving todo'));
     }
   }
 
@@ -99,7 +82,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       if (kDebugMode) {
         print('Error deleting todo: $e');
       }
-      emit(TodoError(l10n.errorDeletingTodo));
+      emit(const TodoError('Error deleting todo'));
     }
   }
 
@@ -117,7 +100,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         emit(TodoLoaded(todos));
       }
     } catch (e) {
-      emit(TodoError(l10n.errorSavingTodo));
+      emit(const TodoError('Error saving todo'));
     }
   }
 }
